@@ -9,12 +9,12 @@ class AddUser extends StatefulWidget {
 
 class _AddUserState extends State<AddUser> {
   String id;
-  TextEditingController productNameController = TextEditingController();
-  TextEditingController productPriceController = TextEditingController();
-  TextEditingController imageUrlController = TextEditingController();
-  String productName;
-  String productPrice;
-  String imageUrl;
+  TextEditingController postTitleController = TextEditingController();
+  TextEditingController postHeadingController = TextEditingController();
+  TextEditingController postDescController = TextEditingController();
+  String title;
+  String heading;
+  String desc;
   bool isFavourite = false;
   @override
   Widget build(BuildContext context) {
@@ -32,7 +32,7 @@ class _AddUserState extends State<AddUser> {
                         color: Colors.green,
                         width: 2,
                         style: BorderStyle.solid)),
-                labelText: "Product Name",
+                labelText: "Title",
                 icon: Icon(
                   Icons.assignment,
                   color: Colors.orangeAccent,
@@ -42,19 +42,18 @@ class _AddUserState extends State<AddUser> {
                   color: Colors.green,
                 )),
             onChanged: (value) {
-              productName = value;
+              title = value;
             },
-            controller: productNameController,
+            controller: postTitleController,
           ),
           TextField(
-            keyboardType: TextInputType.number,
             decoration: InputDecoration(
                 focusedBorder: new UnderlineInputBorder(
                     borderSide: new BorderSide(
                         color: Colors.green,
                         width: 2,
                         style: BorderStyle.solid)),
-                labelText: "Product Price",
+                labelText: "Heading",
                 icon: Icon(
                   Icons.assignment,
                   color: Colors.orangeAccent,
@@ -64,19 +63,18 @@ class _AddUserState extends State<AddUser> {
                   color: Colors.green,
                 )),
             onChanged: (value) {
-              productPrice = value;
+              heading = value;
             },
-            controller: productPriceController,
+            controller: postHeadingController,
           ),
           TextField(
-            keyboardType: TextInputType.url,
             decoration: InputDecoration(
                 focusedBorder: new UnderlineInputBorder(
                     borderSide: new BorderSide(
                         color: Colors.green,
                         width: 2,
                         style: BorderStyle.solid)),
-                labelText: "Image URL",
+                labelText: "Write your topic in details",
                 icon: Icon(
                   Icons.assignment,
                   color: Colors.orangeAccent,
@@ -86,23 +84,23 @@ class _AddUserState extends State<AddUser> {
                   color: Colors.green,
                 )),
             onChanged: (value) {
-              imageUrl = value;
+              desc = value;
             },
-            controller: imageUrlController,
+            controller: postDescController,
           ),
           Row(
             children: <Widget>[
               Padding(
                 padding: EdgeInsets.only(top: 8.0, left: 40),
-                child: ElevatedButton(onPressed:  () {
-                  uploadingData(
-                       productName, 
-                       productPrice, 
-                       imageUrl, 
-                       isFavourite);
-                  Navigator.of(context).pop();
-                 }, child: Text("Add",
-                 style: TextStyle(color: Colors.white),)),
+                child: ElevatedButton(
+                    onPressed: () {
+                      uploadingData(title, heading, desc, isFavourite);
+                      Navigator.of(context).pop();
+                    },
+                    child: Text(
+                      "Add",
+                      style: TextStyle(color: Colors.white),
+                    )),
                 // child: FlatButton(
                 //   color: Colors.black,
                 //   child: Text(
@@ -111,11 +109,10 @@ class _AddUserState extends State<AddUser> {
                 //   ),
                 //   onPressed: () {
                 //     uploadingData(
-                //         productName, productPrice, imageUrl, isFavourite);
+                //         title, heading, desc, isFavourite);
                 //     Navigator.of(context).pop();
                 //   },
                 // ),
-                
               )
             ],
           ),

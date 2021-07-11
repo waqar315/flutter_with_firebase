@@ -81,21 +81,14 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
       ),
+      /////////
       appBar: AppBar(
-        title: Text("GADGETS LIST"),
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(
-              Icons.filter_b_and_w,
-              color: Colors.white,
-            ),
-            onPressed: () {},
-          )
-        ],
+        leading: Icon(Icons.home),
+        title: Text("Post"),
         backgroundColor: Colors.black,
       ),
       body: StreamBuilder<QuerySnapshot>(
-        stream: FirebaseFirestore.instance.collection("products").snapshots(),
+        stream: FirebaseFirestore.instance.collection("posts").snapshots(),
         //stream: Firestore.instance.collection("products").snapshots(),
         builder: (context, snapshot) {
           return !snapshot.hasData
@@ -108,13 +101,23 @@ class _HomePageState extends State<HomePage> {
                       documentSnapshot: data,
                       id: data.id,
                       isFavourite: data['isFavourite'],
-                      imageUrl: data['imageUrl'],
-                      productName: data['productName'],
-                      productPrice: data['productPrice'],
+                      desc: data['desc'],
+                      title: data['title'],
+                      heading: data['heading'],
                     );
                   },
                 );
         },
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.of(context).pushNamed(AddUser.routeName);
+        },
+        backgroundColor: Colors.black,
+        child: Icon(
+          Icons.add,
+          color: Colors.white,
+        ),
       ),
     );
   }
