@@ -17,6 +17,8 @@ class CrudFirestore extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialRoute: HomePage.routeName,
       routes: {
+      
+
         HomePage.routeName: (ctx) => HomePage(),
         AddUser.routeName: (ctx) => AddUser(),
       },
