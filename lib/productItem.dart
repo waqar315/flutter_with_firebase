@@ -32,7 +32,18 @@ class _ProductItemState extends State<ProductItem> {
         width: double.infinity,
         child: Row(
           children: <Widget>[
-
+            // Container(
+            //   child: Expanded(
+            //     child: Row(
+            //       children: [
+            //         Text(
+            //           widget.desc,
+            //           style: TextStyle(color: Colors.white),
+            //         ),
+            //       ],
+            //     ),
+            //   ),
+            // ),
             Padding(
               padding: const EdgeInsets.only(left: 10.0),
               child: Row(
@@ -54,38 +65,42 @@ class _ProductItemState extends State<ProductItem> {
                         height: 10,
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(left: 8.0),
-                        child: Column(
-                          children: [
-                            Text(widget.heading,
-                                style: TextStyle( 
-                                    color: Colors.white, fontSize: 20)),
-                          ],
+                        padding: const EdgeInsets.only(left: 2.0),
+                        child: Container(
+                          width: 210,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(widget.heading,
+                                  style: TextStyle(
+                                      color: Colors.white, fontSize: 20)),
+                            ],
+                          ),
                         ),
                       )
                     ],
                     crossAxisAlignment: CrossAxisAlignment.start,
                   ),
                   Container(
-                    height: 100,
                     child: Column(
                       //mainAxisAlignment: MainAxisAlignment.start,
-                      // crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
-                        IconButton(
-                          alignment: Alignment.bottomRight,
-                          onPressed: () {
-                            editProduct(widget.isFavourite, widget.id);
-                          },
-                          icon: widget.isFavourite
-                              ? Icon(
-                                  Icons.favorite,
-                                  color: Colors.greenAccent,
-                                )
-                              : Icon(
-                                  Icons.favorite_border,
-                                  color: Colors.greenAccent,
-                                ),
+                        Container(
+                          width: 30,
+                          child: IconButton(
+                            onPressed: () {
+                              editProduct(widget.isFavourite, widget.id);
+                            },
+                            icon: widget.isFavourite
+                                ? Icon(
+                                    Icons.favorite,
+                                    color: Colors.greenAccent,
+                                  )
+                                : Icon(
+                                    Icons.favorite_border,
+                                    color: Colors.greenAccent,
+                                  ),
+                          ),
                         ),
                         // IconButton(
                         //   onPressed: () {
@@ -103,7 +118,7 @@ class _ProductItemState extends State<ProductItem> {
               ),
             ),
           ],
-        ),
+        ), ///////
         padding: EdgeInsets.all(10),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
